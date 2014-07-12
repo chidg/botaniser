@@ -27,6 +27,7 @@ ALLOWED_HOSTS = []
 
 SECRET_KEY = local_settings.SECRET_KEY
 
+
 # Application definition
 
 DJANGO_APPS = (
@@ -113,8 +114,23 @@ AUTHENTICATION_BACKENDS = (
 
 #Facebook Auth stuff
 
-AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
+#AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
 AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 FACEBOOK_APP_ID = local_settings.FACEBOOK_APP_ID
 FACEBOOK_APP_SECRET = local_settings.FACEBOOK_APP_SECRET
+
+# REST Framework stuff
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer',
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+
+}
