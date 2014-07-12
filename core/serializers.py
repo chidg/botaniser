@@ -11,17 +11,19 @@ class PhotoSerializer(serializers.ModelSerializer):
 
 
 class SpeciesSerializer(serializers.ModelSerializer):
+    reports = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
         model = Species
-        fields = ('id', 'name', 'guid', 'occurrenceCount')
+        fields = ('id', 'name', 'guid', 'occurrenceCount', 'reports')
 
 
 class ReportSerializer(serializers.HyperlinkedModelSerializer):
     photos = PhotoSerializer(many=True, read_only=False, required=True)
     species = SpeciesSerializer(many=False, read_only=True)
     user = serializers.RelatedField(many=False)
+    location = serializers.RelatedField(many=False)
 
     class Meta:
         model = Report
-        fields = ('id', 'user', 'name', 'description', 'creationTime', 'photos')
+        fields = ('id', 'user', 'name', 'location', 'description', 'creationTime', 'photos')

@@ -2,24 +2,18 @@ from django.shortcuts import render
 
 from django.contrib.auth.models import User
 from core.models import Species, Report
+from rest_framework import generics
 from rest_framework import viewsets
-from api.serializers import UserSerializer, SpeciesSerializer
+from api.serializers import UserSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
+class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class SpeciesViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Species.objects.all()
-    serializer_class = SpeciesSerializer
-
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 # Create your views here.
