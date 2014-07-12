@@ -26,4 +26,4 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Report
-        fields = ('id', 'user', 'name', 'location', 'description', 'creationTime', 'photos')
+        fields = ('id', 'user', 'location', 'description', 'creationTime', 'photos')

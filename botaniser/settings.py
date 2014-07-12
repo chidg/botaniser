@@ -47,8 +47,9 @@ LOCAL_APPS = (
 THIRDPARTY_APPS = (
     'django_facebook',
     'rest_framework',
+    'rest_framework.authtoken',
     'django_extensions',
-    'south'
+    'south',
 
     )
 
@@ -134,6 +135,11 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 
 }
