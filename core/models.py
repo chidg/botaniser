@@ -39,6 +39,7 @@ class Report(models.Model):
     description = models.TextField(max_length=400)
     status = models.CharField(max_length=12, choices=statusChoices, default='accepted', help_text="The current status of this report.")
     points = models.PositiveIntegerField()
+    creationTime = models.DateTimeField('Time created', auto_now_add=True)
 
 
 class Location(models.Model):
@@ -49,6 +50,7 @@ class Location(models.Model):
 class Species(models.Model):
     name = models.CharField("Name", max_length=100)
     guid = models.CharField(max_length=100)
+    occurrenceCount = models.PositiveIntegerField()
 
 
 def imagePath(instance, filename):
@@ -75,12 +77,10 @@ class Photo(models.Model):
     :param content_object: The object that the photo is attached to.
     """
 
-    title = models.CharField(max_length=30)
     photo = ThumbnailerImageField(upload_to=imagePath)
     object_id = models.PositiveIntegerField()
     content_type = models.ForeignKey(ContentType)
     content_object = generic.GenericForeignKey('content_type', 'object_id')
-    note = models.TextField(max_length=200, blank=True)
 
     def __unicode__(self):
         return self.titlea

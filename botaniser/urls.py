@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from rest_framework import routers
-from api import views
+from core import views
 
 from django.contrib import admin
 admin.autodiscover()
@@ -8,6 +8,7 @@ admin.autodiscover()
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
+router.register(r'species', views.SpeciesViewSet)
 
 
 urlpatterns = patterns('',
