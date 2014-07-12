@@ -39,7 +39,10 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 )
 
-LOCAL_APPS = 'api',
+LOCAL_APPS = (
+    'api',
+    'core',
+    )
 
 THIRDPARTY_APPS = (
     'django_facebook',
