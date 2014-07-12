@@ -50,6 +50,7 @@ THIRDPARTY_APPS = (
     'rest_framework.authtoken',
     'django_extensions',
     'south',
+    'corsheaders',
 
     )
 
@@ -58,12 +59,18 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRDPARTY_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 
 ROOT_URLCONF = 'botaniser.urls'
 
@@ -118,7 +125,7 @@ AUTHENTICATION_BACKENDS = (
 
 #Facebook Auth stuff
 
-#AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
+#AUTH_USER_MODEL = 'api.BotaniserUser'
 AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 FACEBOOK_APP_ID = local_settings.FACEBOOK_APP_ID
@@ -133,9 +140,9 @@ REST_FRAMEWORK = {
 
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
+    #'DEFAULT_PERMISSION_CLASSES': [
+    #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    #],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',

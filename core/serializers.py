@@ -19,7 +19,7 @@ class SpeciesSerializer(serializers.ModelSerializer):
 
 
 class ReportSerializer(serializers.HyperlinkedModelSerializer):
-    photos = PhotoSerializer(many=True, read_only=False, required=True)
+    photos = PhotoSerializer(many=True, read_only=True, required=True)
     species = SpeciesSerializer(many=False, read_only=True)
     user = serializers.RelatedField(many=False)
     location = serializers.RelatedField(many=False)

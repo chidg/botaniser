@@ -40,16 +40,26 @@ class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
 class ReportCreate(generics.CreateAPIView):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly, )
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+        #IsOwnerOrReadOnly, )
 
     def pre_save(self, obj):
+        print 'trying to save a report....'
         species = self.request.DATA['species']
         obj.species = Species.objects.get(name=species)
-        obj.user = self.request.user
+        obj.score = species.calculate_score()
+        obj.user = User.objects.get(username='chid')
         lat = self.request.DATA['lat']
         lon = self.request.DATA['lon']
         obj.location = Location.objects.get_or_create(lat=lat, lon=lon)[0]
-        photo = self.request.DATA['photo']
-        obj.photo = Photo(photo=photo)
+
+        img_string = self.request.DATA['imageSrc']
+        img_data = img_string.decode("base64")
+        filename = str(obj.species.name) + 'photo.jpg'
+        img_file = open(filename, "wb")
+        img_file.write(img_data)
+        img_file.close()
+
+        obj.photos = Photo(photo=img_file)
+
 

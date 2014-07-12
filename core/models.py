@@ -52,6 +52,19 @@ class Species(models.Model):
     guid = models.CharField(max_length=100)
     occurrenceCount = models.PositiveIntegerField()
 
+    def calculate_score(self):
+        score_map = {
+            [1,5]:4,
+            [6,10]:3,
+            [11,20]:2,
+            [21,50]:1.5,
+            [51,75]:1.2,
+            [76,102]:1,
+            }
+        for rng in score_map:
+            if self.occurrenceCount in range(rng):
+                return 10 * score_map[rng]
+
 
 def imagePath(instance, filename):
     """A static function used by the Photo :class:`botaniser.core.models.Photo`
