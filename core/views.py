@@ -56,7 +56,7 @@ class ReportCreate(generics.CreateAPIView):
         print 'saved most things....'
         img_string = self.request.DATA['imageSrc']
         img_data = img_string.decode("base64")
-        filename = str(obj.species.name) + 'photo.jpg'
+        filename = str(obj.species.name.replace(' ', '_')) + 'photo.jpg'
         img_file = open(filename, "wb")
         img_file.write(img_data)
         img_file.close()
