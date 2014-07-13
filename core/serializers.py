@@ -1,13 +1,5 @@
-from core.models import Report, Species, Photo
+from core.models import Report, Species
 from rest_framework import serializers
-
-
-class PhotoSerializer(serializers.ModelSerializer):
-    thumbnail = serializers.CharField(source='get_thumbnail', read_only=True)
-
-    class Meta:
-        model = Photo
-        fields = ('photo', 'thumbnail')
 
 
 class SpeciesSerializer(serializers.ModelSerializer):
@@ -19,11 +11,12 @@ class SpeciesSerializer(serializers.ModelSerializer):
 
 
 class ReportSerializer(serializers.HyperlinkedModelSerializer):
-    photos = PhotoSerializer(many=True, read_only=True, required=True)
+    thumbnail = serializers.CharField(source='photo.get_thumbnail', read_only=True)
+
     species = SpeciesSerializer(many=False, read_only=True)
     user = serializers.RelatedField(many=False)
     location = serializers.RelatedField(many=False)
 
     class Meta:
         model = Report
-        fields = ('id', 'user', 'location', 'description', 'creationTime', 'photos')
+        fields = ('id', 'user', 'location', 'description', 'creationTime', 'photo', 'thumbnail')
