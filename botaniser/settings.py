@@ -27,7 +27,7 @@ if 'HEROKU' not in os.environ:
     FACEBOOK_APP_SECRET = local_settings.FACEBOOK_APP_SECRET
 else:
     DEBUG = True # this shouldn't be here, but testing
-    TEMPLATE_DEBUG = False
+    TEMPLATE_DEBUG = True
     SECRET_KEY = os.environ['SECRET_KEY']
     FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
     FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
