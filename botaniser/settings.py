@@ -57,6 +57,7 @@ THIRDPARTY_APPS = (
     'django_extensions',
     'south',
     'corsheaders',
+    'dj_static'
 
     )
 
