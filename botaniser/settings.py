@@ -17,16 +17,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if 'HEROKU' not in os.environ:
+    DEBUG = True
+    TEMPLATE_DEBUG = True
+    import local_settings
+    SECRET_KEY = local_settings.SECRET_KEY
+    FACEBOOK_APP_ID = local_settings.FACEBOOK_APP_ID
+    FACEBOOK_APP_SECRET = local_settings.FACEBOOK_APP_SECRET
+else:
+    DEBUG = False
+    TEMPLATE_DEBUG = False
+    SECRET_KEY = os.environ['SECRET_KEY']
+    FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
+    FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
-SECRET_KEY = os.environ['SECRET_KEY']
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -128,8 +134,7 @@ AUTHENTICATION_BACKENDS = (
 #AUTH_USER_MODEL = 'api.BotaniserUser'
 AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
-FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
-FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
+
 
 # REST Framework stuff
 REST_FRAMEWORK = {
