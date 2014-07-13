@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-import local_settings
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -25,7 +25,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SECRET_KEY = local_settings.SECRET_KEY
+SECRET_KEY = os.environ['SECRET_KEY']
 
 
 # Application definition
@@ -128,8 +128,8 @@ AUTHENTICATION_BACKENDS = (
 #AUTH_USER_MODEL = 'api.BotaniserUser'
 AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
-FACEBOOK_APP_ID = local_settings.FACEBOOK_APP_ID
-FACEBOOK_APP_SECRET = local_settings.FACEBOOK_APP_SECRET
+FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
+FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
 
 # REST Framework stuff
 REST_FRAMEWORK = {
