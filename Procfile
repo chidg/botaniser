@@ -1,1 +1,1 @@
-web: gunicorn botaniser.wsgi --log-file -
+web: bin/gunicorn_django --workers=4 --bind=0.0.0.0:$PORT botaniser/settings.py
