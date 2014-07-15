@@ -1,0 +1,110 @@
+body, html {
+  height: 100%;
+}
+
+.header {
+  overflow: hidden;
+}
+
+.center-hr {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.dark-ui {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #ebebeb;
+  background-color: #2b3e50;
+}
+
+.list-item {
+  padding: 6px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #4E5D6C;
+  margin: 0;
+}
+
+.main {
+  padding: 30% 0;
+  height: 100%;
+  background: url('../images/mainBg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  color:#fff;
+    background-color:#333;
+    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+}
+
+.botaniser-jumbotron {
+  background: url('../images/jumbotron.jpg') no-repeat bottom center;
+  text-align: right;
+
+}
+
+.botaniser-jumbotron h1 {
+  color: white;
+}
+
+.botaniser-jumbotron h2 {
+  color: white;
+}
+
+.row-centered {
+  padding-top: 40px;
+}
+.block {
+  text-align: center;
+}
+
+/* The ghost, nudged to maintain perfect centering */
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
+  }
+
+.botaniser-jumbotron .text-box {
+  background-color:rgba(25,25,25,0.4);
+  border: 1px solid gray;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+

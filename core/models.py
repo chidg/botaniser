@@ -29,7 +29,6 @@ def imagePath(instance, filename):
 
 
 
-
 class Report(models.Model):
     """
     user

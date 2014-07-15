@@ -65,4 +65,6 @@ class ReportCreate(generics.CreateAPIView):
         print 'after photo...'
 
 
+def index(request):
+    return render(request, 'index.html')
 
