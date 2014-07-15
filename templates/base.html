@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
-    <meta name="description" content="Botanizer!">
+    <meta name="description" content="Botaniser">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -28,15 +28,17 @@
                 <li class="active"><a ng-href="#">Home</a></li>
                 <li><a ng-href="#/about">About</a></li>
                 <li><a ng-href="#">Contact</a></li>
+                {% if user.is_authenticated %}
+                <li class="navbar-text">{{user.first_name}}</li>
+                <li><a href="{% url 'logout' %}"}>Logout</a></li>
+                {% endif %}
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 
     {% block content %}{% endblock %}
     <div class="container">
-
-      <div ng-view=""></div>
-
+        <div ng-view=""></div>
     </div>
 
   <div class="footer">
@@ -44,11 +46,6 @@
         <p class="pull-right">&copy; Botaniser 2014</p>
     </div>
   </div>
-
-
-
-
-
 
 
     <!-- build:js(.) scripts/oldieshim.js -->
@@ -86,5 +83,6 @@
         <script src="{% static "js/controllers/nearMe.js" %}"></script>
         <script src="{% static "js/controllers/report.js" %}"></script>
         <!-- endbuild -->
+    {% block js %}{% endblock %}
 </body>
 </html>

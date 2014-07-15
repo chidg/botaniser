@@ -4,7 +4,9 @@
 {% block title %}Botaniser{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{% static "libs/bootstrap-social-gh-pages/bootstrap-social.css" %}">
+    <link href="{% static "django_facebook/css/facebook.css" %}" type="text/css" rel="stylesheet" media="all" />
 {% endblock %}
+{% block js %}{% include 'django_facebook/_facebook_js.html' %}{% endblock %}
 {% block content %}
 
 <div class="jumbotron botaniser-jumbotron">
@@ -14,10 +16,15 @@
                 <h1>Botaniser</h1>
                 <h2 class="text-success">Find rare plant species. Increase knowledge. Have fun.</h2>
                 <p class="clearfix">
-                    <a class="btn btn-social btn-facebook btn-lg">
-                        <i class="fa fa-facebook"></i> Sign in with Facebook
-                    </a>
-                    <a class="btn btn-success btn-lg pull-left" role="button">Learn more &raquo;</a>
+                    {% if not user.is_authenticated %}
+                    <form action="{% url 'facebook_connect' %}?facebook_login=1" method="post">
+                        <input type="hidden" value="1" name="connect" />
+                        {% csrf_token %}
+                        <a class="btn btn-social btn-facebook btn-lg" onclick="F.connect(this.parentNode); return false;" href="javascript:void(0);"> <i class="fa fa-facebook"></i> Sign in with Facebook</a>
+                    {% endif %}
+                        <a class="btn btn-success btn-lg pull-left" role="button">Learn more &raquo;</a>
+                    </form>
+
                 </p>
             </div>
         </div>
@@ -28,7 +35,7 @@
     <div class="row row-centered">
         <div class="col-md-4 block">
             <a href="http://www.govhack.org/" class="centered">
-                <img src="{% static "images/govhacklogo.png" %}" >
+                <img src="{% static "images/govhacklogo.png" %}">
             </a>
         </div>
         <div class="col-md-4 block">

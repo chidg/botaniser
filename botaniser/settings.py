@@ -134,8 +134,8 @@ AUTHENTICATION_BACKENDS = (
 
 #Facebook Auth stuff
 
-#AUTH_USER_MODEL = 'api.BotaniserUser'
-AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
+AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
+AUTH_PROFILE_MODULE = 'api.BotaniserProfile'
 
 
 

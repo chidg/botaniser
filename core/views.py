@@ -5,6 +5,7 @@ from core.models import Species, Report, Location
 from core.permissions import IsOwnerOrReadOnly
 from rest_framework import generics, viewsets, permissions
 from core.serializers import SpeciesSerializer, ReportSerializer
+from django_facebook.utils import get_user_model
 
 
 class SpeciesList(generics.ListAPIView):
@@ -49,7 +50,7 @@ class ReportCreate(generics.CreateAPIView):
         species = self.request.DATA['name']
         obj.species = Species.objects.get(name=species)
         obj.points = obj.species.calculate_score()
-        obj.user = User.objects.get(username='chid')
+        obj.user = get_user_model().objects.get(username='chid')
         lat = self.request.DATA['lat']
         lon = self.request.DATA['lon']
         obj.location = Location.objects.get_or_create(lat=lat, lon=lon)[0]
