@@ -2,6 +2,9 @@
 {% load staticfiles %}
 
 {% block title %}Botaniser{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "libs/bootstrap-social-gh-pages/bootstrap-social.css" %}">
+{% endblock %}
 {% block content %}
 
 <div class="jumbotron botaniser-jumbotron">
@@ -10,7 +13,12 @@
             <div class="col-md-6 col-md-offset-6 text-box">
                 <h1>Botaniser</h1>
                 <h2 class="text-success">Find rare plant species. Increase knowledge. Have fun.</h2>
-                <p><a class="btn btn-success btn-lg" role="button">Learn more &raquo;</a></p>
+                <p class="clearfix">
+                    <a class="btn btn-social btn-facebook btn-lg">
+                        <i class="fa fa-facebook"></i> Sign in with Facebook
+                    </a>
+                    <a class="btn btn-success btn-lg pull-left" role="button">Learn more &raquo;</a>
+                </p>
             </div>
         </div>
     </div>
@@ -18,23 +26,20 @@
 <div class="container">
     <hr>
     <div class="row row-centered">
-        <div class="col-md-4 block" >
+        <div class="col-md-4 block">
             <a href="http://www.govhack.org/" class="centered">
                 <img src="{% static "images/govhacklogo.png" %}" >
             </a>
-
         </div>
         <div class="col-md-4 block">
             <a class="" href="http://www.ala.org.au/" class="centered">
                 <img src="{% static "images/alalogo.jpg" %}">
-            </a>
-
+           </a>
         </div>
         <div class="col-md-4 block">
             <a href="https://github.com/govhack-botaniser" class="centered">
                 <img src="{% static "images/octocat.jpg" %}">
             </a>
-
         </div>
     </div>
     <div class="row">
