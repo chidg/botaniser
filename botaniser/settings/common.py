@@ -17,21 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if 'HEROKU' not in os.environ:
-    DEBUG = True
-    TEMPLATE_DEBUG = True
-    import local_settings
-    SECRET_KEY = local_settings.SECRET_KEY
-    FACEBOOK_APP_ID = local_settings.FACEBOOK_APP_ID
-    FACEBOOK_APP_SECRET = local_settings.FACEBOOK_APP_SECRET
-else:
-    DEBUG = False
-    TEMPLATE_DEBUG = False
-    SECRET_KEY = os.environ['SECRET_KEY']
-    FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
-    FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
-
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -86,12 +71,6 @@ WSGI_APPLICATION = 'botaniser.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -175,6 +154,6 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '../static'),
+    os.path.join(BASE_DIR, '../../static'),
 )
 print STATICFILES_DIRS

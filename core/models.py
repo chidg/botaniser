@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from easy_thumbnails.fields import ThumbnailerImageField
-from botaniser import settings
+from botaniser.settings import settings
+
 
 #######thumbnails stuff #########
 from easy_thumbnails.signals import saved_file

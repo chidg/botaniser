@@ -4,7 +4,7 @@ from django_facebook.models import FacebookModel
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django_facebook.utils import get_user_model, get_profile_model
-from botaniser import settings
+from botaniser.settings import settings
 
 
 from django.contrib.auth import get_user_model

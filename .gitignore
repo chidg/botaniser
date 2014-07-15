@@ -168,3 +168,4 @@ Temporary Items
 
 
 staticfiles
+botaniser/settings/dev.py
