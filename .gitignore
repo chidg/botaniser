@@ -4,7 +4,7 @@
 media/
 env/
 local_settings.py
-
+fabfile/
 
 
 # ----------------------------------------------------------------------------------------
@@ -165,3 +165,4 @@ Icon
 .AppleDesktop
 Network Trash Folder
 Temporary Items
+botaniser/settings/dev.py

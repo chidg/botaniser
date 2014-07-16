@@ -11,21 +11,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-import local_settings
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
-SECRET_KEY = local_settings.SECRET_KEY
 
 
 # Application definition
@@ -39,7 +27,10 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 )
 
-LOCAL_APPS = 'api',
+LOCAL_APPS = (
+    'api',
+    'core'
+    )
 
 THIRDPARTY_APPS = (
     'django_facebook',
@@ -117,8 +108,6 @@ AUTHENTICATION_BACKENDS = (
 #AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
 AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
-FACEBOOK_APP_ID = local_settings.FACEBOOK_APP_ID
-FACEBOOK_APP_SECRET = local_settings.FACEBOOK_APP_SECRET
 
 # REST Framework stuff
 REST_FRAMEWORK = {
@@ -134,3 +123,23 @@ REST_FRAMEWORK = {
     ]
 
 }
+
+try:
+    from local_settings import *
+        # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+
+    TEMPLATE_DEBUG = True
+
+except ImportError:
+    DEBUG = False
+
+    TEMPLATE_DEBUG = False
+
+    ALLOWED_HOSTS = ['*']
+
+    SECRET_KEY = os.environ['SECRET_KEY']
+    FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
+    FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
+
+
