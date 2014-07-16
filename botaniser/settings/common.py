@@ -15,6 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -60,12 +61,6 @@ WSGI_APPLICATION = 'botaniser.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -84,7 +79,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -98,6 +92,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django_facebook.context_processors.facebook',
 )
 
+TEMPLATE_DIRS = (
+    'templates',
+    )
+
 AUTHENTICATION_BACKENDS = (
     'django_facebook.auth_backends.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',
@@ -105,8 +103,9 @@ AUTHENTICATION_BACKENDS = (
 
 #Facebook Auth stuff
 
-#AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
-AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
+
+AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
+AUTH_PROFILE_MODULE = 'api.BotaniserProfile'
 
 
 # REST Framework stuff
@@ -124,22 +123,9 @@ REST_FRAMEWORK = {
 
 }
 
-try:
-    from local_settings import *
-        # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = True
 
-    TEMPLATE_DEBUG = True
 
-except ImportError:
-    DEBUG = False
-
-    TEMPLATE_DEBUG = False
-
-    ALLOWED_HOSTS = ['*']
-
-    SECRET_KEY = os.environ['SECRET_KEY']
-    FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
-    FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
-
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, '../../static'),
+)
 

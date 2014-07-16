@@ -165,4 +165,15 @@ Icon
 .AppleDesktop
 Network Trash Folder
 Temporary Items
+<<<<<<< HEAD
 botaniser/settings/dev.py
+=======
+
+
+staticfiles
+botaniser/settings/dev.py
+
+fabfile/
+>>>>>>> incorporate-angular
+
+images/facebook_profiles/
