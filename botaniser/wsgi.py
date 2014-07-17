@@ -11,5 +11,9 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 from django.core.wsgi import get_wsgi_application
 import os
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "botaniser.settings.prod")
+if os.environ['USER'] == 'ubuntu':
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "botaniser.settings.prod")
+    else:
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "botaniser.settings.dev")
+
 application = get_wsgi_application()

@@ -4,7 +4,7 @@ import os
 # SECURITY WARNING: keep the secret key used in production secret!
 DEBUG = False
 TEMPLATE_DEBUG = False
-
+print os.environ
 SECRET_KEY = os.environ['SECRET_KEY']
 FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
 FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
