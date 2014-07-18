@@ -1,4 +1,4 @@
-from botaniser.settings.common import *
+from settings.common import *
 import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
