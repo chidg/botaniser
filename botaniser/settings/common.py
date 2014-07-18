@@ -30,7 +30,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'api',
-    'core'
+    'core',
     )
 
 THIRDPARTY_APPS = (
@@ -38,7 +38,6 @@ THIRDPARTY_APPS = (
     'rest_framework',
     'django_extensions',
     'south'
-
     )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRDPARTY_APPS
@@ -123,9 +122,8 @@ REST_FRAMEWORK = {
 
 }
 
-
-
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '../../static'),
+    os.path.join(BASE_DIR, '../static'),
 )
 

@@ -1,13 +1,13 @@
 from django.conf.urls import patterns, include, url
 from rest_framework import routers
-from api import views
+from core import views
+from api import views as api_views
 
 from django.contrib import admin
 admin.autodiscover()
 
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
 
 
 urlpatterns = patterns('',
