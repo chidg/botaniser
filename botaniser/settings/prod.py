@@ -1,4 +1,4 @@
-from settings.common import *
+from common import *
 import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
