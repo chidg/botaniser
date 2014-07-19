@@ -4,8 +4,8 @@ from django_facebook.models import FacebookModel
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django_facebook.utils import get_user_model, get_profile_model
-from botaniser.settings import settings
 
+from core.utils import get_settings_module
 
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
@@ -20,7 +20,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class BotaniserProfile(FacebookModel):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile')
+    user = models.OneToOneField(get_settings_module().AUTH_USER_MODEL, related_name='profile')
     score = models.PositiveIntegerField()
 
     def calculate_score(self):

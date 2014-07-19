@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from easy_thumbnails.fields import ThumbnailerImageField
-from botaniser.settings import settings
-
+from core.utils import get_settings_module
 
 #######thumbnails stuff #########
 from easy_thumbnails.signals import saved_file
@@ -50,7 +49,7 @@ class Report(models.Model):
         )
 
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, related_name='reports')
+    user = models.ForeignKey(get_settings_module().AUTH_USER_MODEL, null=True, related_name='reports')
     location = models.ForeignKey('Location', null=True, related_name='reports')
     photo = ThumbnailerImageField(upload_to=imagePath)
     species = models.ForeignKey('Species', null=True, related_name='reports')
