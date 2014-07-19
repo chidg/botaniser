@@ -1,9 +1,9 @@
 import os
 
 if os.environ['USER'] == 'ubuntu':
-	import settings.prod
+	from settings.prod import *
 	print 'importing settings.prod in settings.py '
 else:
-    import settings.dev
+    from settings.dev import *
     print 'importing settings.dev in settings.py '
 
