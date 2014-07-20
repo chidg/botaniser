@@ -9,7 +9,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
 FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
 
-INSTALLED_APPS = INSTALLED_APPS + ('storages',)
+INSTALLED_APPS = INSTALLED_APPS + ('storages', 'gunicorn')
 
 AWS_STORAGE_BUCKET_NAME = "botaniser-media"
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
@@ -44,7 +44,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'botaniser/logs/botaniser_django.log',
+            'filename': 'logs/botaniser_django.log',
             'formatter': 'verbose'
         },
     },
