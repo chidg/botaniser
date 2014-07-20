@@ -36,6 +36,7 @@ LOCAL_APPS = (
 THIRDPARTY_APPS = (
     'django_facebook',
     'rest_framework',
+    'rest_framework.authtoken',
     'django_extensions',
     'south'
     )
