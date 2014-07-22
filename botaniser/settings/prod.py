@@ -44,7 +44,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'botaniser_django.log',
+            'filename': '/home/ubuntu/apps/botaniser/logs/botaniser_django.log',
             'formatter': 'verbose'
         },
     },
